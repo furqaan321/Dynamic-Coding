@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+int longestCommonSubstringLength(string s1, string s2)
+  {
+   int n1 = s1.length();
+   int n2 = s2.length();
+   int maxLen=0;
+   for(int i = 0; i < n1; i++)
+     {
+      for(int j = 0; j < n2; j++)
+        {
+         if(s2[j]==s1[i])
+           {
+            int len=0;
+            int curr1 = i, curr2 = j;
+            while(curr1 < n1 && curr2 < n2 && s1[curr1] == s2[curr2])
+              {
+                 len++;
+                 curr1++;
+                 curr2++;
+              }
+            maxLen = max(maxLen, len);
+           }
+        }
+     }
+   return maxLen;
+  }
+int main()
+  {
+      string s1 = "abababbbabbbabbabbab";
+      string s2 = "bbabbbbabbabababbababbbbabbabab";
+      cout<<"The length of the longest common substring of s1 and s2 is "<<longestCommonSubstringLength(s1,s2)<<endl;
+  }
